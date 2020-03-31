@@ -85,6 +85,8 @@ EXPOSE 8888
 WORKDIR /home/$NB_USER/work
 RUN echo "ALL            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+RUN conda install -c powerai aif360
+
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
