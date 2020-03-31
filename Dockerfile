@@ -67,9 +67,6 @@ RUN cd /tmp && \
     wget https://repo.continuum.io/miniconda/Miniconda3-4.7.12.1-Linux-ppc64le.sh && \
     /bin/bash Miniconda3-4.7.12.1-Linux-ppc64le.sh -f -b -p $CONDA_DIR && \
     rm -rf Miniconda3-4.7.12.1-Linux-ppc64le.sh && \
-    $CONDA_DIR/bin/conda install --quiet --yes conda=4.7.12.1  && \
-    $CONDA_DIR/bin/conda config --system --add channels conda-forge && \
-    $CONDA_DIR/bin/conda config --system --set auto_update_conda false && \
     conda clean --all -y
 
 # Install Jupyter notebook and Hub
