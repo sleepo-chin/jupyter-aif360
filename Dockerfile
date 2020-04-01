@@ -90,17 +90,16 @@ RUN echo "ALL            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 RUN conda install -c powerai aif360
 
-# Add local files as late as possible to avoid cache busting
-COPY start.sh /usr/local/bin/
-COPY start-notebook.sh /usr/local/bin/
-COPY start-singleuser.sh /usr/local/bin/
-COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
-RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
-
-
 # Configure container startup
 # ENTRYPOINT ["tini", "-g", "--"]
-CMD ["start-notebook.sh"]
+CMD ["jupyter","notebook"]
+
+# Add local files as late as possible to avoid cache busting
+# COPY start.sh /usr/local/bin/
+# COPY start-notebook.sh /usr/local/bin/
+# COPY start-singleuser.sh /usr/local/bin/
+# COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
+# RUN chown -R $NB_USER:users /home/$NB_USER/.jupyter
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
