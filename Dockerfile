@@ -95,7 +95,7 @@ RUN conda install -c powerai aif360
 CMD ["jupyter","notebook"]
 
 # Add local files as late as possible to avoid cache busting
-# COPY start.sh /usr/local/bin/
+COPY start.sh /usr/local/bin/
 # COPY start-notebook.sh /usr/local/bin/
 # COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/
